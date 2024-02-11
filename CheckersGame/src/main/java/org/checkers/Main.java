@@ -12,7 +12,7 @@ package org.checkers;
     TODO: Design main class for game flow
 
     TODO: Build CheckerBoard class for output
-     
+
      */
 
 public class Main {

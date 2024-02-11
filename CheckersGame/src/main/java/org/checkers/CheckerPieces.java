@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CheckerPieces {
+    private String ANSI_RESET = "\u001B[0m";
+    private String name;
+    protected String nameWithColor;
+
     /*
     Make an arrayList that is the size of the amount of
     pieces for 1 player (12). Make this a protected list so the child
@@ -22,11 +26,17 @@ public class CheckerPieces {
        take the desired piece and move it to the desired destination. We would need some logic in there to make sure it
        is a legal move though.
      */
-    protected List<String> pieces = new ArrayList<>(12);
+    private static int pieceCount;
 
+    protected List<String> pieces = new ArrayList<>(12);
+    public CheckerPieces(String name) {
+        pieceCount++;
+    }
     public CheckerPieces(List<String> pieces) {
         this.pieces = pieces;
+        pieceCount++;
     }
+
 
     public List<String> getPieces() {
         return pieces;

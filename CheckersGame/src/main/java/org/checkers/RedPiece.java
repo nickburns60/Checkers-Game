@@ -1,11 +1,16 @@
 package org.checkers;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class RedPieces extends CheckerPieces{
+public class RedPiece extends CheckerPieces{
+    private String ANSI_RED = "\u001B[31m";
+    private String ANSI_RESET = "\u001B[0m";
+    public RedPiece(String name) {
+        super(name);
+        super.nameWithColor = ANSI_RED + name + ANSI_RESET;
+    }
 
-    public RedPieces(List<String> pieces) {
+    public RedPiece(List<String> pieces) {
         super(pieces);
     }
 
