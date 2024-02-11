@@ -7,6 +7,7 @@ public class CheckerPieces {
     private String ANSI_RESET = "\u001B[0m";
     private String name;
     protected String nameWithColor;
+    private String location;
 
     /*
     Make an arrayList that is the size of the amount of
@@ -19,30 +20,29 @@ public class CheckerPieces {
      The child classes ideally would extend this class and use a setter to set values for each of their own 12 pieces.
      It would also be great if we could color code the pieces so they can all be o's instead of x and o's.
 
-     BEAU - Maybe we could create a method in each subclass that instantiates and names 12 objects from each subclass and
-     then puts them into a list? Then we wouldn't need to have local variables in the Main class and we could just use
-     class methods to move pieces.
-       - for example, each subclass could have a method called movePiece(String pieceName, String destination) that would
-       take the desired piece and move it to the desired destination. We would need some logic in there to make sure it
-       is a legal move though.
+     FIXME: I moved the list of pieces to the player class because I felt that that is more a property of the player
+      than the pieces themselves.
      */
-    private static int pieceCount;
 
-    protected List<String> pieces = new ArrayList<>(12);
-    public CheckerPieces(String name) {
-        pieceCount++;
-    }
-    public CheckerPieces(List<String> pieces) {
-        this.pieces = pieces;
-        pieceCount++;
-    }
-
-
-    public List<String> getPieces() {
-        return pieces;
+    public CheckerPieces(String name, String location) {
+        //this conditional adds a 0 to single digit numbers to make each name exactly 2 characters. For spacing.
+        if (Integer.parseInt(name) < 10) {
+            this.name = "0" + name;
+        } else {
+            this.name = name;
+        }
+        this.location = location;
     }
 
-    public void setPieces(List<String> pieces) {
-        this.pieces = pieces;
+    public String getLocation() {
+        return location;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNameWithColor() {
+        return nameWithColor;
     }
 }

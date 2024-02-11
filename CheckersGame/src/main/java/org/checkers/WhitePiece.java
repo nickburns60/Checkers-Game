@@ -9,9 +9,9 @@ public class WhitePiece extends CheckerPieces{
         super(pieces);
     }
 
-    public WhitePiece(String name) {
-        super(name);
-        super.nameWithColor = ANSI_WHITE + name + ANSI_RESET;
+    public WhitePiece(String name, String location) {
+        super(name, location);
+        super.nameWithColor = ANSI_WHITE + super.getName() + ANSI_RESET;
 
     }
 
