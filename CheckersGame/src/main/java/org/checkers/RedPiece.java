@@ -10,19 +10,6 @@ public class RedPiece extends CheckerPieces{
         super.nameWithColor = ANSI_RED + super.getName() + ANSI_RESET;
     }
 
-    public RedPiece(List<String> pieces) {
-        super(pieces);
-    }
 
-    @Override //Sample setup to put the pieces into a list, so they all have their own index
-    public void setPieces(List<String> pieces) {
-        super.setPieces(pieces);
-        for(String piece : pieces){
-            pieces.add("o");
-        }
-    }
-    public String toString(){
-        return pieces.toString();
-    }
 
 }
