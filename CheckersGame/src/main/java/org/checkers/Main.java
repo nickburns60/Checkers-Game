@@ -38,6 +38,9 @@ public class Main {
             String[] playerMove = input.nextLine().split(" ");
             player1.setPieceToMove(playerMove[0]);
             player1.setMovePieceTo(playerMove[1]);
+            //Meant to reprint board after changes are made
+            player1 = new Player("red");
+            player2 = new Player("white");
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
             break;
 

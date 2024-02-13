@@ -21,6 +21,7 @@ public class Player {
         createPlayerPieces(redOrWhite);
     }
 
+
     //getters/setters
 
 
@@ -38,7 +39,7 @@ public class Player {
                 //Want this if() to set the current piece equal to the location the user enters
                 //but I can't get it to function because pieces is the CheckerPieces[] variable type
                 if(pieces[i].toString().equals(pieceToMove)){
-                    currentLocation = movePieceTo;
+                    pieces[i] = new WhitePiece(String.valueOf(i), movePieceTo);
                 }
             }
         } else if (redOrWhite.equalsIgnoreCase("red")) {
@@ -49,8 +50,7 @@ public class Player {
                 //Want this if() to set the current piece equal to the location the user enters
                 //but I can't get it to function because pieces is the CheckerPieces[] variable type
                 if(pieces[i].toString().equals(pieceToMove)){
-                    currentLocation = movePieceTo;
-                }
+                    pieces[i] = new RedPiece(String.valueOf(i), movePieceTo);                }
             }
         }
     }
