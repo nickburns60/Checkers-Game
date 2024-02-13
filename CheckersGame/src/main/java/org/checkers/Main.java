@@ -26,16 +26,23 @@ public class Main {
         //Demonstrates coordinate system
         System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
 
-        System.out.println(checkerBoard);
-       /* while (true){
+
+        while (true){
             System.out.println("Welcome to checkers!");
             //Selects the pieces the user will use based on their input
             System.out.println("As you can see, our pieces each have their own number, and each space has it's own" +
                     " letter and number. To move a piece, type the piece you would like to move, then a space, then the position you want it to move to.");
             System.out.println("Like this:  00 E2");
 
+            //Captures piece number and location to move it to
+            String[] playerMove = input.nextLine().split(" ");
+            player1.setPieceToMove(playerMove[0]);
+            player1.setMovePieceTo(playerMove[1]);
+            System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
+            break;
 
-        }*/
+
+        }
 
     }
 }

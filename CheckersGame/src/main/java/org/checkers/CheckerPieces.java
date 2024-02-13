@@ -9,15 +9,6 @@ public class CheckerPieces {
     protected String nameWithColor;
     private String location;
 
-   private String newLocation;
-
-    public String getNewLocation() {
-        return newLocation;
-    }
-
-    public void setNewLocation(String newLocation) {
-        this.newLocation = newLocation;
-    }
 
     public CheckerPieces(String name, String location) {
         //this conditional adds a 0 to single digit numbers to make each name exactly 2 characters. For spacing.
