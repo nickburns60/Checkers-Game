@@ -1,18 +1,15 @@
 package org.checkers;
     /*
     COORDINATE SYSTEM:
-    The main coordinate system is complete! It is accomplished in 2 steps.
       1. A coordinate layout is defined in CheckerBoard class
       2. The checker pieces are instantiated in a loop in the Player class with the method createPlayerPieces(). They
       are given a name (a number starting with 0 up to 11) and a location with one of the helper functions.
       3. These coordinates are interpreted in the CheckerBoard class by the method putPiecesOnBoard()
-      TODO: create method that will adjust String created by putPiecesOnBoard() so it looks better for output
-      TODO: Create method for moving pieces. Needs to only allow legal moves.
+      TODO: Method for moving pieces does not remember previous moved pieces (they reset position on the next round)
+      TODO: Method for moving pieces needs to only allow legal moves.
     */
 
-    /*
-    TODO: Design main class for game flow
-     */
+
 
 import java.util.Scanner;
 
@@ -37,23 +34,16 @@ public class Main {
 
         while (true){
             System.out.println(ANSI_RED + "Player 1:" + ANSI_RESET + " make your move.");
-            //Captures piece number and location to move it to
-            String[] playerMove = input.nextLine().split(" ");
-            player1.setPieceToMove(playerMove[0]);
-            player1.setMovePieceTo(playerMove[1]);
-            //Meant to reprint board after changes are made
-            player1.createPlayerPieces("red");
-            player2.createPlayerPieces("white");
+        //Captures piece number and location to move it to
+            String[] playerMove = input.nextLine().toUpperCase().split(" ");
+            player1.movePiece(playerMove[0], playerMove[1]);
+        //Meant to reprint board after changes are made
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
             System.out.println();
+        //Above repeated for second player
             System.out.println(ANSI_WHITE + "Player 2:" + ANSI_RESET + " make your move.");
-
-            playerMove = input.nextLine().split(" ");
-            player2.setPieceToMove(playerMove[0]);
-            player2.setMovePieceTo(playerMove[1]);
-            //Meant to reprint board after changes are made
-            player1.createPlayerPieces("red");
-            player2.createPlayerPieces("white");
+            playerMove = input.nextLine().toUpperCase().split(" ");
+            player2.movePiece(playerMove[0], playerMove[1]);
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
             System.out.println();
 

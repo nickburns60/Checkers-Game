@@ -4,17 +4,6 @@ public class Player {
     //variables
     private CheckerPieces[] pieces = new CheckerPieces[12];
 
-    private String pieceToMove; //Player selected piece to move
-
-    private String movePieceTo; //User selected place to move piece to
-
-    public void setPieceToMove(String pieceToMove) {
-        this.pieceToMove = pieceToMove;
-    }
-
-    public void setMovePieceTo(String movePieceTo) {
-        this.movePieceTo = movePieceTo;
-    }
 
     //constructor
     public Player(String redOrWhite) {
@@ -36,21 +25,19 @@ public class Player {
                 currentLocation = initializeWhitePieceLocations(i);
                 pieces[i] = new WhitePiece(String.valueOf(i), currentLocation);
 
-                //Want this if() to set the current piece equal to the location the user enters
-                //but I can't get it to function because pieces is the CheckerPieces[] variable type
-                if(pieces[i].getName().equals(pieceToMove)){
-                    pieces[i] = new WhitePiece(pieceToMove, movePieceTo);
-                }
             }
         } else if (redOrWhite.equalsIgnoreCase("red")) {
             for (int i = 0; i < pieces.length; i++) {
                 currentLocation = initializeRedPieceLocations(i);
                 pieces[i] = new RedPiece(String.valueOf(i), currentLocation);
 
-                //Want this if() to set the current piece equal to the location the user enters
-                if(pieces[i].getName().equals(pieceToMove)){
-                    pieces[i] = new RedPiece(pieceToMove, movePieceTo);
-                }
+            }
+        }
+    }
+    public void movePiece(String name, String location) {
+        for (CheckerPieces piece : pieces) {
+            if (piece.getName().equals(name)){
+                piece.setLocation(location);
             }
         }
     }

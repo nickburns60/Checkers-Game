@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class CheckerPieces {
     private String ANSI_RESET = "\u001B[0m";
     private String name;
-    protected String nameWithColor;
     private String location;
+    protected String nameWithColor;
 
 
     public CheckerPieces(String name, String location) {
@@ -30,5 +30,9 @@ public class CheckerPieces {
 
     public String getNameWithColor() {
         return nameWithColor;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
