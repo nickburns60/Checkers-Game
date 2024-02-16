@@ -27,7 +27,7 @@ public class Player {
 
     //class methods
     //This method instantiates all the pieces in the associated array, then uses their constructor to name them the current i number
-    private void createPlayerPieces(String redOrWhite) {
+    public void createPlayerPieces(String redOrWhite) {
         String currentLocation;
 
         //This logic will fill the players pieces depending on whether the player chooses white or red.
