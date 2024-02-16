@@ -16,14 +16,14 @@ public class CheckerBoard {
             | H1 H2 H3 H4 H5 H6 H7 H8 | 
             ---------------------------
             """;
-    //public String coloredCheckerBoard = colorCheckerBoardSpaces();
 
     private String colorCheckerBoardSpaces(String uncoloredCheckerBoard){
         String coloredCheckerBoard = "";
         String[] allSpaces = uncoloredCheckerBoard.split(" ");
+
         for (int i = 0; i < allSpaces.length; i++) {
             if (i % 2 != 0){
-                if (allSpaces[i].contains(ANSI_RESET)) {
+                if (allSpaces[i].contains(ANSI_RESET)) { //The checker pieces already have an ANSI reset code, this ensures we only add a reset code to spaces
                     allSpaces[i] = ANSI_BLACK + allSpaces[i];
                 } else {
                     allSpaces[i] = ANSI_BLACK + allSpaces[i] + ANSI_RESET;
@@ -45,17 +45,7 @@ public class CheckerBoard {
         }
         return colorCheckerBoardSpaces(piecesOnBoard);
     }
-    private String colorWhiteSpaces(int i) {
-        String currentLocation;
-        if (i < 4) {
-            currentLocation = "A" + (i * 2 + 2); //odd spaces
-        } else if (i < 8) {
-            currentLocation = "B" + ((i - 4) * 2 + 1); //even spaces
-        } else {
-            currentLocation = "C" + ((i - 8) * 2 + 2); //odd spaces
-        }
-        return currentLocation;
-    }
+
 
 
 }

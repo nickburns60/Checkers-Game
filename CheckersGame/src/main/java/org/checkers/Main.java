@@ -16,12 +16,12 @@ import java.util.Scanner;
 public class Main {
     private static String ANSI_RED = "\u001B[31m";
     private static String ANSI_RESET = "\u001B[0m";
-    private static String ANSI_WHITE = "\u001B[37m";
+    private static String ANSI_BLUE = "\u001B[34m";
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         CheckerBoard checkerBoard = new CheckerBoard();
         Player player1 = new Player("red");
-        Player player2 = new Player("white");
+        Player player2 = new Player("blue");
 
         //Demonstrates coordinate system
         System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
@@ -41,7 +41,7 @@ public class Main {
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
             System.out.println();
         //Above repeated for second player
-            System.out.println(ANSI_WHITE + "Player 2:" + ANSI_RESET + " make your move.");
+            System.out.println(ANSI_BLUE + "Player 2:" + ANSI_RESET + " make your move.");
             playerMove = input.nextLine().toUpperCase().split(" ");
             player2.movePiece(playerMove[0], playerMove[1]);
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
