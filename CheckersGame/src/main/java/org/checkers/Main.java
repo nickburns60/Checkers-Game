@@ -17,6 +17,9 @@ package org.checkers;
 import java.util.Scanner;
 
 public class Main {
+    private static String ANSI_RED = "\u001B[31m";
+    private static String ANSI_RESET = "\u001B[0m";
+    private static String ANSI_WHITE = "\u001B[37m";
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         CheckerBoard checkerBoard = new CheckerBoard();
@@ -33,7 +36,9 @@ public class Main {
             System.out.println("As you can see, our pieces each have their own number, and each space has it's own" +
                     " letter and number. To move a piece, type the piece you would like to move, then a space, then the position you want it to move to.");
             System.out.println("Like this:  00 E2");
+            System.out.println();
 
+            System.out.println(ANSI_RED + "Player 1:" + ANSI_RESET + " make your move.");
             //Captures piece number and location to move it to
             String[] playerMove = input.nextLine().split(" ");
             player1.setPieceToMove(playerMove[0]);
@@ -42,8 +47,17 @@ public class Main {
             player1.createPlayerPieces("red");
             player2.createPlayerPieces("white");
             System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
-            break;
+            System.out.println();
+            System.out.println(ANSI_WHITE + "Player 2:" + ANSI_RESET + " make your move.");
 
+            playerMove = input.nextLine().split(" ");
+            player2.setPieceToMove(playerMove[0]);
+            player2.setMovePieceTo(playerMove[1]);
+            //Meant to reprint board after changes are made
+            player1.createPlayerPieces("red");
+            player2.createPlayerPieces("white");
+            System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
+            System.out.println();
 
         }
 
