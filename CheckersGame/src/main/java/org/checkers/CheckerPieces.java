@@ -12,7 +12,7 @@ public class CheckerPieces {
 
     public CheckerPieces(String name, String location) {
         //this conditional adds a 0 to single digit numbers to make each name exactly 2 characters. For spacing.
-        if (Integer.parseInt(name) < 10) {
+        if (name.length() < 2) {
             this.name = "0" + name;
         } else {
             this.name = name;
