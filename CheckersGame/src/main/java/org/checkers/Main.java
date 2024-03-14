@@ -33,19 +33,40 @@ public class Main {
         System.out.println();
 
         while (true){
-            System.out.println(ANSI_RED + "Player 1:" + ANSI_RESET + " make your move.");
-        //Captures piece number and location to move it to
-            String[] playerMove = input.nextLine().toUpperCase().split(" ");
-            player1.movePiece(playerMove[0], playerMove[1]);
-        //Meant to reprint board after changes are made
-            System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
-            System.out.println();
-        //Above repeated for second player
-            System.out.println(ANSI_BLUE + "Player 2:" + ANSI_RESET + " make your move.");
-            playerMove = input.nextLine().toUpperCase().split(" ");
-            player2.movePiece(playerMove[0], playerMove[1]);
-            System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
-            System.out.println();
+            boolean illegalMove = true;
+            while (illegalMove){
+                try {
+                    System.out.println(ANSI_RED + "Player 1:" + ANSI_RESET + " make your move.");
+                    //Captures piece number and location to move it to
+                    String[] playerMove = input.nextLine().toUpperCase().split(" ");
+                    //Makes sure piece is not placed on another piece
+                    player1.checkPiece(playerMove[1]);
+                    player1.movePiece(playerMove[0], playerMove[1]);
+                    //Meant to reprint board after changes are made
+                    System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
+                    System.out.println();
+                    illegalMove = false;
+                }catch (MoveException e){
+                    //throws error message when a piece is placed on another
+                    System.err.println(e.getMessage());
+                }
+            }
+            //Above repeated for second player
+            while (!illegalMove){
+                try {
+                    System.out.println(ANSI_BLUE + "Player 2:" + ANSI_RESET + " make your move.");
+                    String[] playerMove = input.nextLine().toUpperCase().split(" ");
+                    player2.checkPiece(playerMove[1]);
+                    player2.movePiece(playerMove[0], playerMove[1]);
+                    System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
+                    System.out.println();
+                    illegalMove = true;
+                } catch (MoveException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+
+
 
         }
 

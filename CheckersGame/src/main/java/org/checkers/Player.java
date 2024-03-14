@@ -24,7 +24,6 @@ public class Player {
             for (int i = 0; i < pieces.length; i++) {
                 currentLocation = initializeBluePieceLocations(i);
                 pieces[i] = new BluePiece(String.valueOf(i), currentLocation);
-
             }
         } else if (redOrBlue.equalsIgnoreCase("red")) {
             for (int i = 0; i < pieces.length; i++) {
@@ -33,6 +32,14 @@ public class Player {
 
             }
         }
+    }
+    public void checkPiece(String location) throws MoveException{
+        for(CheckerPieces piece : pieces){
+            if (location.equals(piece.getLocation())){
+                throw new MoveException("Space entered is occupied, select an open space");
+            }
+        }
+
     }
     public void movePiece(String name, String location) {
         for (CheckerPieces piece : pieces) {
