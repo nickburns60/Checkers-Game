@@ -41,6 +41,7 @@ public class Main {
                     String[] playerMove = input.nextLine().toUpperCase().split(" ");
                     //Makes sure piece is not placed on another piece
                     player1.checkPiece(playerMove[1]);
+                    player2.checkPiece(playerMove[1]);
                     player1.movePiece(playerMove[0], playerMove[1]);
                     //Meant to reprint board after changes are made
                     System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
@@ -56,6 +57,7 @@ public class Main {
                 try {
                     System.out.println(ANSI_BLUE + "Player 2:" + ANSI_RESET + " make your move.");
                     String[] playerMove = input.nextLine().toUpperCase().split(" ");
+                    player1.checkPiece(playerMove[1]);
                     player2.checkPiece(playerMove[1]);
                     player2.movePiece(playerMove[0], playerMove[1]);
                     System.out.println(checkerBoard.putPiecesOnBoard(player1.getPieces(), player2.getPieces()));
